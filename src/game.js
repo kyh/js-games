@@ -93,6 +93,8 @@ class TicTacToe {
   init(elementID) {
     console.log('Initialize game');
     this.gameElement = document.getElementById(elementID);
+
+    // Remap `this.board to contain an array of boardPieces { id, element, status }
     this.board = this.board.map((boardPiece, index) => {
       return {
         id: index,
@@ -101,15 +103,21 @@ class TicTacToe {
       };
     });
 
+    // Render game on DOM and add event listeners
     renderGame(this.gameElement, this.board);
     initiateEventListeners.call(this, this.board, this.nextTurn);
   }
 
+  // This callback gets called when the user places a move
   nextTurn(index) {
     const clickedBoardPiece = this.board[index];
+
     if (clickedBoardPiece.status === 'E') {
       clickedBoardPiece.status = this.currentPlayer;
+
+      // Change to next player
       this.currentPlayer = (this.currentPlayer === 'X') ? 'O' : 'X';
+      // Update DOM
       updateBoard(clickedBoardPiece);
 
       const winner = checkForWinner(this.board);
