@@ -13,8 +13,14 @@ html {
   flex-wrap: wrap;
 }
 
-div {
+.game-wrapper > div {
   width: 33.3%;
   height: 33.3%;
-  border: 1px solid #eee;
+  box-shadow: 0 0 1px 0 #A0A0A0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 5rem;
+  color: #444;
 }
