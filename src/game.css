@@ -23,4 +23,5 @@ html {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 5rem;
   color: #444;
+  cursor: pointer;
 }
