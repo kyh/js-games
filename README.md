@@ -15,3 +15,4 @@ $ npm install
 ```bash
 npm run start
 ```
+Open up the game at `http://localhost:8000`
