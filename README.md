@@ -6,7 +6,7 @@
 Clone the repo and install Node.js modules:
 
 ```
-$ git clone git@github.com:tehkaiyu/learn-with-friends.git .
+$ git clone git@github.com:tehkaiyu/tic-tac-toe.git .
 $ npm install
 ```
 
