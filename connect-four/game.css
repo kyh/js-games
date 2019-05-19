@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.game-wrapper {
+  display: flex;
+  margin: 100px auto;
+  flex-wrap: wrap;
+}
+
+.game-wrapper > div {
+  box-shadow: 0 0 1px 0 #a0a0a0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.game-wrapper > div.taken {
+}
