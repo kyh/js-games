@@ -1,6 +1,6 @@
-# Tic Tac Toe
+# JavaScript Games
 
-> Tic Tac Toe game in html/css/js
+> Tic Tac Toe | Connect 4
 
 ## Getting Started
 Clone the repo and install Node.js modules:

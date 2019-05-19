@@ -5,7 +5,7 @@
  */
 function renderGame(root, board) {
   const docFragment = document.createDocumentFragment();
-  board.forEach((boardPiece) => {
+  board.forEach(boardPiece => {
     docFragment.appendChild(boardPiece.element);
   });
 
@@ -19,7 +19,7 @@ function renderGame(root, board) {
  */
 function initiateEventListeners(board, callback) {
   board.forEach((boardPiece, index) => {
-    boardPiece.element.addEventListener('click', (e) => {
+    boardPiece.element.addEventListener('click', e => {
       e.preventDefault();
       callback.call(this, index);
     });
@@ -42,27 +42,33 @@ function updateBoard(boardPiece) {
 function checkForWinner(board) {
   // Check columns
   for (let i = 0; i <= 2; i++) {
-    if (board[i].status !== 'E' &&
-        board[i].status === board[i + 3].status &&
-        board[i + 3].status === board[i + 6].status) {
+    if (
+      board[i].status !== 'E' &&
+      board[i].status === board[i + 3].status &&
+      board[i + 3].status === board[i + 6].status
+    ) {
       return board[i].status;
     }
   }
 
   // Check Rows
   for (let i = 0; i <= 6; i = i + 3) {
-    if (board[i].status !== 'E' &&
-        board[i].status === board[i + 1].status &&
-        board[i + 1].status === board[i + 2].status) {
+    if (
+      board[i].status !== 'E' &&
+      board[i].status === board[i + 1].status &&
+      board[i + 1].status === board[i + 2].status
+    ) {
       return board[i].status;
     }
   }
 
   // Check Diagonal
   for (let i = 0, j = 4; i <= 2; i = i + 2, j = j - 2) {
-    if (board[i].status !== 'E' &&
-        board[i].status === board[i + j].status &&
-        board[i + j].status === board[i + (2 * j)].status) {
+    if (
+      board[i].status !== 'E' &&
+      board[i].status === board[i + j].status &&
+      board[i + j].status === board[i + 2 * j].status
+    ) {
       return board[i].status;
     }
   }
@@ -75,7 +81,7 @@ function checkForWinner(board) {
  * @param  {Array} board Array of board pieces
  */
 function boardIsFull(board) {
-  const empty = board.filter((boardPiece) => boardPiece.status === 'E');
+  const empty = board.filter(boardPiece => boardPiece.status === 'E');
   return empty.length === 0;
 }
 
@@ -83,11 +89,7 @@ class TicTacToe {
   constructor() {
     this.currentPlayer = 'X'; // X starts the game
     this.gameElement = null;
-    this.board = [
-      'E', 'E', 'E',
-      'E', 'E', 'E',
-      'E', 'E', 'E'
-    ];
+    this.board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'];
   }
 
   init(elementID) {
@@ -116,7 +118,7 @@ class TicTacToe {
       clickedBoardPiece.status = this.currentPlayer;
 
       // Change to next player
-      this.currentPlayer = (this.currentPlayer === 'X') ? 'O' : 'X';
+      this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
       // Update DOM
       updateBoard(clickedBoardPiece);
 
@@ -127,7 +129,7 @@ class TicTacToe {
       }
 
       if (boardIsFull(this.board)) {
-        alert('It\'s a tie');
+        alert("It's a tie");
         return;
       }
     }

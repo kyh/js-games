@@ -1,4 +1,4 @@
 import TicTacToe from './game';
-require('./game.css');
+import './game.css';
 
 TicTacToe.init('game');
