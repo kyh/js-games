@@ -1,4 +1,4 @@
-import TicTacToe from './game';
-import './game.css';
+import TicTacToe from "./game";
+import "./game.css";
 
-TicTacToe.init('game');
+TicTacToe.init("game");

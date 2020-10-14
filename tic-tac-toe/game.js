@@ -19,7 +19,7 @@ function renderGame(root, board) {
  */
 function initiateEventListeners(board, callback) {
   board.forEach((boardPiece, index) => {
-    boardPiece.element.addEventListener('click', e => {
+    boardPiece.element.addEventListener("click", e => {
       e.preventDefault();
       callback.call(this, index);
     });
@@ -43,7 +43,7 @@ function checkForWinner(board) {
   // Check columns
   for (let i = 0; i <= 2; i++) {
     if (
-      board[i].status !== 'E' &&
+      board[i].status !== "E" &&
       board[i].status === board[i + 3].status &&
       board[i + 3].status === board[i + 6].status
     ) {
@@ -52,9 +52,9 @@ function checkForWinner(board) {
   }
 
   // Check Rows
-  for (let i = 0; i <= 6; i = i + 3) {
+  for (let i = 0; i <= 6; i += 3) {
     if (
-      board[i].status !== 'E' &&
+      board[i].status !== "E" &&
       board[i].status === board[i + 1].status &&
       board[i + 1].status === board[i + 2].status
     ) {
@@ -63,9 +63,9 @@ function checkForWinner(board) {
   }
 
   // Check Diagonal
-  for (let i = 0, j = 4; i <= 2; i = i + 2, j = j - 2) {
+  for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
     if (
-      board[i].status !== 'E' &&
+      board[i].status !== "E" &&
       board[i].status === board[i + j].status &&
       board[i + j].status === board[i + 2 * j].status
     ) {
@@ -81,26 +81,26 @@ function checkForWinner(board) {
  * @param  {Array} board Array of board pieces
  */
 function boardIsFull(board) {
-  const empty = board.filter(boardPiece => boardPiece.status === 'E');
+  const empty = board.filter(boardPiece => boardPiece.status === "E");
   return empty.length === 0;
 }
 
 class TicTacToe {
   constructor() {
-    this.currentPlayer = 'X'; // X starts the game
+    this.currentPlayer = "X"; // X starts the game
     this.gameElement = null;
-    this.board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'];
+    this.board = ["E", "E", "E", "E", "E", "E", "E", "E", "E"];
   }
 
   init(elementID) {
-    console.log('Initialize game');
+    console.log("Initialize game");
     this.gameElement = document.getElementById(elementID);
 
     // Remap `this.board to contain an array of boardPieces { id, element, status }
     this.board = this.board.map((boardPiece, index) => {
       return {
         id: index,
-        element: document.createElement('div'),
+        element: document.createElement("div"),
         status: boardPiece
       };
     });
@@ -114,11 +114,11 @@ class TicTacToe {
   nextTurn(index) {
     const clickedBoardPiece = this.board[index];
 
-    if (clickedBoardPiece.status === 'E') {
+    if (clickedBoardPiece.status === "E") {
       clickedBoardPiece.status = this.currentPlayer;
 
       // Change to next player
-      this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+      this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
       // Update DOM
       updateBoard(clickedBoardPiece);
 
@@ -130,7 +130,6 @@ class TicTacToe {
 
       if (boardIsFull(this.board)) {
         alert("It's a tie");
-        return;
       }
     }
   }
