@@ -13,6 +13,5 @@ $ npm install
 ## Running Game Server
 
 ```bash
-npm run start
+npm run dev
 ```
-Open up the game at `http://localhost:8000`

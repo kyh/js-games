@@ -12,12 +12,12 @@
 const createEmptyTable = (row, col) =>
   new Array(row).fill(null).map(() => new Array(col).fill(null));
 
-const getTableWidth = table => {
+const getTableWidth = (table) => {
   const [row] = table;
   return row.length;
 };
 
-const getTableHeight = table => {
+const getTableHeight = (table) => {
   return table.length;
 };
 
@@ -42,19 +42,19 @@ const checkIsMatch = ([first, ...rest], matchCount = 0, prevElement) => {
   return checkIsMatch(rest, 1, first);
 };
 
-const checkRows = table => {
+const checkRows = (table) => {
   return table.reduce((isMatch, row) => isMatch || checkIsMatch(row), false);
 };
 
-const checkColumns = table => {
+const checkColumns = (table) => {
   for (let ci = 0; ci < table.length; ci += 1) {
-    const columns = table.map(col => col[ci]);
+    const columns = table.map((col) => col[ci]);
     if (checkIsMatch(columns)) return true;
   }
   return false;
 };
 
-const checkDiagonal = table => {
+const checkDiagonal = (table) => {
   const width = getTableWidth(table);
   const height = getTableHeight(table);
   // ascendingDiagonalCheck
@@ -89,10 +89,10 @@ const table = [
   [0, 0, 0, 1, 1, 1, 1],
   [0, 0, 0, 1, 0, 1, 0],
   [0, 0, 0, 0, 0, 1, 0],
-  [0, 0, 0, 0, 0, 1, 0]
+  [0, 0, 0, 0, 0, 1, 0],
 ];
 
-// export default {
-//   createEmptyTable,
-//   checkIsMatch
-// };
+export default {
+  createEmptyTable,
+  checkIsMatch,
+};
