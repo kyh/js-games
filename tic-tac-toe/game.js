@@ -5,7 +5,7 @@
  */
 function renderGame(root, board) {
   const docFragment = document.createDocumentFragment();
-  board.forEach(boardPiece => {
+  board.forEach((boardPiece) => {
     docFragment.appendChild(boardPiece.element);
   });
 
@@ -19,7 +19,7 @@ function renderGame(root, board) {
  */
 function initiateEventListeners(board, callback) {
   board.forEach((boardPiece, index) => {
-    boardPiece.element.addEventListener("click", e => {
+    boardPiece.element.addEventListener("click", (e) => {
       e.preventDefault();
       callback.call(this, index);
     });
@@ -81,7 +81,7 @@ function checkForWinner(board) {
  * @param  {Array} board Array of board pieces
  */
 function boardIsFull(board) {
-  const empty = board.filter(boardPiece => boardPiece.status === "E");
+  const empty = board.filter((boardPiece) => boardPiece.status === "E");
   return empty.length === 0;
 }
 
@@ -101,7 +101,7 @@ class TicTacToe {
       return {
         id: index,
         element: document.createElement("div"),
-        status: boardPiece
+        status: boardPiece,
       };
     });
 
