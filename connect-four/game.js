@@ -17,9 +17,7 @@ const getTableWidth = (table) => {
   return row.length;
 };
 
-const getTableHeight = (table) => {
-  return table.length;
-};
+const getTableHeight = (table) => table.length;
 
 /**
  * Checks an array of elements to see if there are 4 consecutive types
@@ -42,9 +40,8 @@ const checkIsMatch = ([first, ...rest], matchCount = 0, prevElement) => {
   return checkIsMatch(rest, 1, first);
 };
 
-const checkRows = (table) => {
-  return table.reduce((isMatch, row) => isMatch || checkIsMatch(row), false);
-};
+const checkRows = (table) =>
+  table.reduce((isMatch, row) => isMatch || checkIsMatch(row), false);
 
 const checkColumns = (table) => {
   for (let ci = 0; ci < table.length; ci += 1) {
@@ -58,29 +55,31 @@ const checkDiagonal = (table) => {
   const width = getTableWidth(table);
   const height = getTableHeight(table);
   // ascendingDiagonalCheck
-  for (let i = 3; i < width; i++) {
-    for (let j = 0; j < height - 3; j++) {
+  for (let i = 3; i < width; i += 1) {
+    for (let j = 0; j < height - 3; j += 1) {
       if (
-        table[i][j] == player &&
-        table[i - 1][j + 1] == player &&
-        table[i - 2][j + 2] == player &&
-        table[i - 3][j + 3] == player
+        table[i][j] === player &&
+        table[i - 1][j + 1] === player &&
+        table[i - 2][j + 2] === player &&
+        table[i - 3][j + 3] === player
       )
         return true;
     }
   }
   // descendingDiagonalCheck
-  for (let i = 3; i < width; i++) {
-    for (let j = 3; j < height; j++) {
+  for (let i = 3; i < width; i += 1) {
+    for (let j = 3; j < height; j += 1) {
       if (
-        table[i][j] == player &&
-        table[i - 1][j - 1] == player &&
-        table[i - 2][j - 2] == player &&
-        table[i - 3][j - 3] == player
+        table[i][j] === player &&
+        table[i - 1][j - 1] === player &&
+        table[i - 2][j - 2] === player &&
+        table[i - 3][j - 3] === player
       )
         return true;
     }
   }
+
+  return false;
 };
 
 const table = [

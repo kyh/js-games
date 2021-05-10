@@ -31,6 +31,7 @@ function initiateEventListeners(board, callback) {
  * @param  {Object} boardPiece { element, status }
  */
 function updateBoard(boardPiece) {
+  // eslint-disable-next-line no-param-reassign
   boardPiece.element.innerHTML = boardPiece.status;
 }
 
@@ -41,7 +42,7 @@ function updateBoard(boardPiece) {
  */
 function checkForWinner(board) {
   // Check columns
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i <= 2; i += 1) {
     if (
       board[i].status !== "E" &&
       board[i].status === board[i + 3].status &&
@@ -97,13 +98,11 @@ class TicTacToe {
     this.gameElement = document.getElementById(elementID);
 
     // Remap `this.board to contain an array of boardPieces { id, element, status }
-    this.board = this.board.map((boardPiece, index) => {
-      return {
-        id: index,
-        element: document.createElement("div"),
-        status: boardPiece,
-      };
-    });
+    this.board = this.board.map((boardPiece, index) => ({
+      id: index,
+      element: document.createElement("div"),
+      status: boardPiece,
+    }));
 
     // Render game on DOM and add event listeners
     renderGame(this.gameElement, this.board);
